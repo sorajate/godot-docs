@@ -1,5 +1,7 @@
 :allow_comments: False
 
+.. _doc_physics_index:
+
 Physics
 =======
 
@@ -19,3 +21,4 @@ Physics
    collision_shapes_3d
    large_world_coordinates
    troubleshooting_physics_issues
+   interpolation/index

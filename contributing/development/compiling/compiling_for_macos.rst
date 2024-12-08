@@ -15,8 +15,8 @@ Requirements
 
 For compiling under macOS, the following is required:
 
-- `Python 3.6+ <https://www.python.org/downloads/macos/>`_.
-- `SCons 3.1.2+ <https://scons.org/pages/download.html>`_ build system.
+- `Python 3.8+ <https://www.python.org/downloads/macos/>`_.
+- `SCons 4.0+ <https://scons.org/pages/download.html>`_ build system.
 - `Xcode <https://apps.apple.com/us/app/xcode/id497799835>`_
   (or the more lightweight Command Line Tools for Xcode).
 - `Vulkan SDK <https://sdk.lunarg.com/sdk/download/latest/mac/vulkan-sdk.dmg>`_
@@ -58,6 +58,12 @@ To compile for Apple Silicon (ARM64) powered Macs, use::
 To support both architectures in a single "Universal 2" binary, run the above two commands and then use ``lipo`` to bundle them together::
 
     lipo -create bin/godot.macos.editor.x86_64 bin/godot.macos.editor.arm64 -output bin/godot.macos.editor.universal
+
+.. tip::
+    If you are compiling Godot to make changes or contribute to the engine,
+    you may want to use the SCons options ``dev_build=yes`` or ``dev_mode=yes``.
+    See :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases`
+    for more info.
 
 If all goes well, the resulting binary executable will be placed in the
 ``bin/`` subdirectory. This executable file contains the whole engine and
@@ -159,22 +165,6 @@ You can then zip the ``macos_template.app`` folder to reproduce the ``macos.zip`
 template from the official Godot distribution::
 
     zip -r9 macos.zip macos_template.app
-
-Using Pyston for faster development
------------------------------------
-
-You can use `Pyston <https://www.pyston.org/>`__ to run SCons. Pyston is a
-JIT-enabled implementation of the Python language (which SCons is written in).
-Its "full" version is currently only compatible with Linux, but Pyston-lite is
-also compatible with macOS (both x86 and ARM). Pyston can speed up incremental
-builds significantly, often by a factor between 1.5× and 2×. Pyston can be
-combined with alternative linkers such as LLD or Mold to get even faster builds.
-
-To install Pyston-lite, run ``python -m pip install pyston_lite_autoload`` then
-run SCons as usual. This will automatically load a subset of Pyston's
-optimizations in any Python program you run. However, this won't bring as much
-of a performance improvement compared to installing "full" Pyston (which
-currently can't be done on macOS).
 
 Cross-compiling for macOS from Linux
 ------------------------------------

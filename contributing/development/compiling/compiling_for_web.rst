@@ -15,19 +15,15 @@ Requirements
 
 To compile export templates for the Web, the following is required:
 
-- `Emscripten 3.1.39+ <https://emscripten.org>`__.
-- `Python 3.6+ <https://www.python.org/>`__.
-- `SCons 3.1.2+ <https://scons.org/pages/download.html>`__ build system.
+- `Emscripten 3.1.62+ <https://emscripten.org>`__.
+- `Python 3.8+ <https://www.python.org/>`__.
+- `SCons 4.0+ <https://scons.org/pages/download.html>`__ build system.
 
 .. seealso:: To get the Godot source code for compiling, see
              :ref:`doc_getting_source`.
 
              For a general overview of SCons usage for Godot, see
              :ref:`doc_introduction_to_the_buildsystem`.
-
-.. note:: Emscripten 3.1.39+ is recommended, but older 3.x versions are known to work.
-
-          Please note that the minimum requirement for GDExtension support is 3.1.14.
 
 Building export templates
 -------------------------
@@ -125,7 +121,7 @@ server requirements.
         python platform/web/serve.py
 
     This will serve the contents of the ``bin/`` folder and open the default web
-    browser automatically. In the page that opens, access ``godot.tools.html``
+    browser automatically. In the page that opens, access ``godot.editor.html``
     and you should be able to test the web editor this way.
 
     Note that for production use cases, this Python-based web server should not

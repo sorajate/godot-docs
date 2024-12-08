@@ -371,7 +371,7 @@ The Environment resource supports many popular mid- and post-processing effects.
 Screen-Space Reflections (SSR)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*This feature is only available when using the Forward+ backend, not
+*This feature is only available when using the Forward+ renderer, not
 Mobile or Compatibility.*
 
 While Godot supports several sources of reflection data such as
@@ -413,7 +413,7 @@ uniforms.
 Screen-Space Ambient Occlusion (SSAO)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*This feature is only available when using the Forward+ backend, not
+*This feature is only available when using the Forward+ renderer, not
 Mobile or Compatibility.*
 
 As mentioned in the **Ambient** section, areas where light from light nodes
@@ -487,7 +487,7 @@ parameters:
 Screen-Space Indirect Lighting (SSIL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*This feature is only available when using the Forward+ backend, not
+*This feature is only available when using the Forward+ renderer, not
 Mobile or Compatibility.*
 
 :abbr:`SSIL (Screen-Space Indirect Lighting)` provides indirect lighting for
@@ -533,7 +533,7 @@ Tweaking :abbr:`SSIL (Screen-Space Indirect Lighting)` is possible with several 
 Signed Distance Field Global Illumination (SDFGI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*This feature is only available when using the Forward+ backend, not
+*This feature is only available when using the Forward+ renderer, not
 Mobile or Compatibility.*
 
 Signed distance field global illumination (SDFGI) is a form of real-time global
@@ -653,7 +653,8 @@ There are 2 ways to use glow in 2D:
   rendering output.
 
   - To enable HDR in 2D, open the Project Settings, enable
-    **Rendering > Viewport > HDR 2D** then restart the editor.
+    :ref:`Rendering > Viewport > HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
+    then restart the editor.
 
 - If you want to maximize performance, you can leave HDR disabled for 2D
   rendering. However, you will have less control on which objects glow.
@@ -676,10 +677,10 @@ There are 2 ways to use glow in 2D:
 .. warning::
 
     The 2D renderer renders in linear color space if the
-    **Rendering > Viewport > HDR 2D** project setting is enabled, so
-    ``source_color`` must also be used for uniform samplers that are
-    used as color input in ``canvas_item`` shaders. If this is not done,
-    the texture will appear washed out.
+    :ref:`Rendering > Viewport > HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
+    project setting is enabled, so the ``source_color`` hint must also be used
+    for uniform samplers that are used as color input in ``canvas_item`` shaders.
+    If this is not done, the texture will appear washed out.
 
     If 2D HDR is disabled, ``source_color`` will keep working correctly in
     ``canvas_item`` shaders, so it's recommend to use it when relevant either
@@ -841,7 +842,7 @@ values result in a visually brighter scene.
 Auto Exposure
 ^^^^^^^^^^^^^
 
-*This feature is only available when using the Forward+ backend, not
+*This feature is only available when using the Forward+ renderer, not
 Mobile or Compatibility.*
 
 Even though, in most cases, lighting and texturing are heavily artist controlled,

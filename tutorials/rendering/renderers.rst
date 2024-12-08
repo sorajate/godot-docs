@@ -14,14 +14,13 @@ Introduction
 
 Godot 4 includes three renderers:
 
-- **Forward+**, sometimes called **Clustered Forward**. The most advanced renderer,
-  suited for desktop platforms only. Used by default on desktop platforms. This
-  renderer uses **Vulkan**, **Direct3D 12**, or **Metal** as the rendering driver,
-  and it uses the **RenderingDevice** backend.
-- **Mobile**, sometimes called **Forward Mobile**. Fewer features, but renders
-  simple scenes faster. Suited for mobile and desktop platforms. Used by default
-  on mobile platforms. This renderer uses **Vulkan**, **Direct3D 12**, or **Metal**
-  as the rendering driver, and it uses the **RenderingDevice** backend.
+- **Forward+**. The most advanced renderer, suited for desktop platforms only.
+  Used by default on desktop platforms. This renderer uses **Vulkan**, **Direct3D 12**,
+  or **Metal** as the rendering driver, and it uses the **RenderingDevice** backend.
+- **Mobile**. Fewer features, but renders simple scenes faster. Suited for mobile
+  and desktop platforms. Used by default on mobile platforms. This renderer uses
+  **Vulkan**, **Direct3D 12**, or **Metal** as the rendering driver, and it uses
+  the **RenderingDevice** backend.
 - **Compatibility**, sometimes called **GL Compatibility**. The least advanced
   renderer, suited for low-end desktop and mobile platforms. Used by default on
   the web platform. This renderer uses **OpenGL** as the rendering driver.
@@ -66,7 +65,7 @@ Choose **Forward+** if:
 
 Choose **Mobile** if:
 
-    - You are developing for newer mobile devices, XR, or desktop.
+    - You are developing for newer mobile devices, desktop XR, or desktop.
     - You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.
     - You are developing a 3D game.
     - You want to use advanced rendering features, subject to the limitations
@@ -74,8 +73,9 @@ Choose **Mobile** if:
 
 Choose **Compatibility** if:
 
-    - You are developing for older mobile devices, or older desktop devices. The
-      Compatibility renderer supports the widest range of hardware.
+    - You are developing for older mobile devices, older desktop devices, or
+      standalone XR. The Compatibility renderer supports the widest range of hardware.
+    - You are developing for web. In this case, Compatibility is the only choice.
     - You have older hardware which does not support Vulkan. In this case,
       Compatibility is the only choice.
     - You are developing a 2D game, or a 3D game which does not need advanced
@@ -120,6 +120,10 @@ Hardware with RenderingDevice support is hardware which can run Vulkan, Direct3D
 Overall comparison
 ~~~~~~~~~~~~~~~~~~
 
+.. Note that these tables use emojis, which are not monospaced in most editors.
+.. The tables look malformed but are not. When making changes, check the nearby
+.. lines for guidance.
+
 +---------------------+--------------------------+--------------------------+--------------------------+
 | Feature             | Compatibility            | Mobile                   | Forward+                 |
 +=====================+==========================+==========================+==========================+
@@ -147,8 +151,9 @@ Overall comparison
 |                     |                          |                          | optimized. Use Mobile or |
 |                     |                          |                          | Compatibility instead.   |
 +---------------------+--------------------------+--------------------------+--------------------------+
-| XR                  | ✔️ Yes.                  | ✔️ Yes.                  | ✔️ Yes.                  |
-|                     |                          |                          |                          |
+| XR                  | ✔️ Yes. Recommended for  | ✔️ Yes. Recommended for  | ⚠️ Supported, but poorly |
+|                     | standalone headsets.     |  desktop headsets.       | optimized. Use Mobile or |
+|                     |                          |                          | Compatibility instead.   |
 +---------------------+--------------------------+--------------------------+--------------------------+
 | Web                 | ✔️ Yes.                  | ❌ No.                   | ❌ No.                   |
 +---------------------+--------------------------+--------------------------+--------------------------+
