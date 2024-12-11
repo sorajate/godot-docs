@@ -13,7 +13,7 @@ Advantages of upgrading
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Along with the
-`new features present in 4.0 <https://github.com/godotengine/godot/blob/master/CHANGELOG.md>`__,
+`new features present in 4.0 <https://godotengine.org/article/godot-4-0-sets-sail>`__,
 upgrading gives the following advantages:
 
 - Many bugs are fixed in 4.0, but cannot be resolved in 3.x for various reasons
@@ -22,7 +22,8 @@ upgrading gives the following advantages:
   will continue to be supported for some time after 4.0 is released, but it will
   eventually stop receiving support.
 
-See :ref:`doc_docs_changelog` for a list of pages documenting new features in Godot 4.0.
+See :ref:`doc_docs_changelog` for a list of pages documenting new features in
+Godot 4.0, and :ref:`doc_list_of_features` for a list of all features in Godot.
 
 Disadvantages of upgrading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -50,7 +51,7 @@ Godot 3.x for the following reasons:
   :ref:`exporting to the Web <doc_exporting_for_web>`, as binary size directly
   influences how fast the engine can initialize (regardless of download speed).
 - Godot 4 does not and will not have support for GLES2 rendering.
-  (There is still support for GLES3 rendering using the new OpenGL backend,
+  (There is still support for GLES3 rendering using the new Compatibility renderer,
   which means that devices without Vulkan support can still run Godot 4.)
 
   - If you are targeting **very** old hardware such as Intel Sandy Bridge (2nd
@@ -61,6 +62,10 @@ Godot 3.x for the following reasons:
 
 Caveats of upgrading
 ^^^^^^^^^^^^^^^^^^^^
+
+.. UPDATE: Planned feature. There are several planned or missing features that
+.. may be added back in the future. Check this section for accuracy and update
+.. it if things have changed!
 
 **Since Godot 4 is a complete rewrite in many aspects, some features have
 unfortunately been lost in the process.** Some of these features may be restored
@@ -75,9 +80,9 @@ in future Godot releases:
   "overbright" modulate values have no visible effect. Since Godot 4.2, you can
   enable the project setting :ref:`HDR 2D<class_ProjectSettings_property_rendering/viewport/hdr_2d>`
   to perform 2D rendering in HDR. See also :ref:`doc_environment_and_post_processing_using_glow_in_2d`.
-- While rendering still happens in HDR in 3D when using the Forward Plus or
-  Forward Mobile backends, Viewports cannot return HDR data anymore. This is
-  planned to be restored at some point in the future.
+- While rendering still happens in HDR in 3D when using the Forward+ or Mobile
+  renderers, Viewports cannot return HDR data anymore. This is planned to be 
+  restored at some point in the future.
 - Mono was replaced by .NET 6. This means exporting C# projects to Android, iOS
   and HTML5 is no longer supported for now. Exporting C# projects to desktop
   platforms is still supported, and as of 4.2 there's experimental support for
@@ -105,7 +110,7 @@ only ``.gdshader`` is supported in Godot 4.0.
 Running the project upgrade tool
 --------------------------------
 
-.. warning::
+.. danger::
 
     **Make a full backup of your project** before upgrading! The project upgrade
     tool will *not* perform any backups of the project that is being upgraded.
@@ -494,7 +499,7 @@ Checking Environment settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Graphics quality settings were moved from Environment properties to project
-settings. This was done to make run-time quality adjustments easier, without
+settings. This was done to make runtime quality adjustments easier, without
 having to access the currently active Environment resource then modify its
 properties.
 
@@ -569,7 +574,7 @@ The most notable examples of this are:
   The conversion tool will use the string-based syntax which is still present in
   Godot 4, but it's recommended to switch to the :ref:`class_Signal`-based syntax
   described on the linked page. This way, strings are no longer involved,
-  which avoids issues with signal name errors that can only be discovered at run-time.
+  which avoids issues with signal name errors that can only be discovered at runtime.
 - Built-in scripts that are :ref:`tool scripts <doc_running_code_in_the_editor>`
   do not get the ``tool`` keyword converted to the ``@tool`` annotation.
 - The Tween node was removed in favor of Tweeners, which are also available in
