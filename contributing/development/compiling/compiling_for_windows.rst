@@ -30,10 +30,10 @@ For compiling under Windows, the following is required:
       Supports ``x86_64`` and ``x86_32`` only.
     - `MinGW-LLVM <https://github.com/mstorsjo/llvm-mingw/releases>`_ with clang can be used as
       an alternative to Visual Studio and MinGW-w64.
-      Supports ``x86_64``, ``x86_32``, and ``arm64``.      
-- `Python 3.6+ <https://www.python.org/downloads/windows/>`_. 
+      Supports ``x86_64``, ``x86_32``, and ``arm64``.
+- `Python 3.8+ <https://www.python.org/downloads/windows/>`_.
   **Make sure to enable the option to add Python to the** ``PATH`` **in the installer.**
-- `SCons 3.1.2+ <https://scons.org/pages/download.html>`_ build system. Using the
+- `SCons 4.0+ <https://scons.org/pages/download.html>`_ build system. Using the
   latest release is recommended, especially for proper support of recent Visual
   Studio releases.
 
@@ -145,6 +145,12 @@ the engine source code (using ``cd``) and type:
 
 .. note:: When compiling with multiple CPU threads, SCons may warn about
           pywin32 being missing. You can safely ignore this warning.
+
+.. tip::
+    If you are compiling Godot to make changes or contribute to the engine,
+    you may want to use the SCons options ``dev_build=yes`` or ``dev_mode=yes``. 
+    See :ref:`doc_introduction_to_the_buildsystem_development_and_production_aliases`
+    for more info.
 
 If all goes well, the resulting binary executable will be placed in
 ``C:\godot\bin\`` with the name ``godot.windows.editor.x86_32.exe`` or
