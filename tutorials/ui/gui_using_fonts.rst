@@ -644,7 +644,7 @@ which accept positive and negative values:
 - **Top:** Additional spacing above glyphs. This is used for multiline text,
   but also to calculate the minimum size of controls such as :ref:`class_Label`
   and :ref:`class_Button`.
-- **Top:** Additional spacing below glyphs. This is used for multiline text,
+- **Bottom:** Additional spacing below glyphs. This is used for multiline text,
   but also to calculate the minimum size of controls such as :ref:`class_Label`
   and :ref:`class_Button`.
 
@@ -750,7 +750,7 @@ System fonts
     in non-functional system font loading.
 
 System fonts are a different type of resource compared to imported fonts. They
-are never actually imported into the project, but are loaded at run-time. This
+are never actually imported into the project, but are loaded at runtime. This
 has 2 benefits:
 
 - The fonts are not included within the exported PCK file, leading to a smaller

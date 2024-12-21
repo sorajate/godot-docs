@@ -23,6 +23,8 @@ A camera feed gives you access to a single physical camera attached to your devi
 
 \ **Note:** Many cameras will return YCbCr images which are split into two textures and need to be combined in a shader. Godot does this automatically for you if you set the environment to show the camera image in the background.
 
+\ **Note:** This class is currently only implemented on Linux, macOS, and iOS. On other platforms no **CameraFeed**\ s will be available. To get a **CameraFeed** on iOS, the camera plugin from `godot-ios-plugins <https://github.com/godotengine/godot-ios-plugins>`__ is required.
+
 .. rst-class:: classref-reftable-group
 
 Properties
@@ -48,6 +50,10 @@ Methods
    :widths: auto
 
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`_activate_feed<class_CameraFeed_private_method__activate_feed>`\ (\ ) |virtual|                                                        |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`_deactivate_feed<class_CameraFeed_private_method__deactivate_feed>`\ (\ ) |virtual|                                                    |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` | :ref:`get_datatype<class_CameraFeed_method_get_datatype>`\ (\ ) |const|                                                                      |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`get_id<class_CameraFeed_method_get_id>`\ (\ ) |const|                                                                                  |
@@ -55,6 +61,10 @@ Methods
    | :ref:`String<class_String>`                       | :ref:`get_name<class_CameraFeed_method_get_name>`\ (\ ) |const|                                                                              |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` | :ref:`get_position<class_CameraFeed_method_get_position>`\ (\ ) |const|                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_texture_tex_id<class_CameraFeed_method_get_texture_tex_id>`\ (\ feed_image_type\: :ref:`FeedImage<enum_CameraServer_FeedImage>`\ ) |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_external<class_CameraFeed_method_set_external>`\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ )               |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`set_format<class_CameraFeed_method_set_format>`\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -142,6 +152,14 @@ Feed supplies YCbCr images that need to be converted to RGB.
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_YCBCR_SEP** = ``3``
 
 Feed supplies separate Y and CbCr images that need to be combined and converted to RGB.
+
+.. _class_CameraFeed_constant_FEED_EXTERNAL:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_EXTERNAL** = ``4``
+
+Feed supplies external image.
 
 .. rst-class:: classref-item-separator
 
@@ -241,6 +259,30 @@ Formats supported by the feed. Each entry is a :ref:`Dictionary<class_Dictionary
 Method Descriptions
 -------------------
 
+.. _class_CameraFeed_private_method__activate_feed:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **_activate_feed**\ (\ ) |virtual| :ref:`🔗<class_CameraFeed_private_method__activate_feed>`
+
+Called when the camera feed is activated.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CameraFeed_private_method__deactivate_feed:
+
+.. rst-class:: classref-method
+
+|void| **_deactivate_feed**\ (\ ) |virtual| :ref:`🔗<class_CameraFeed_private_method__deactivate_feed>`
+
+Called when the camera feed is deactivated.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_CameraFeed_method_get_datatype:
 
 .. rst-class:: classref-method
@@ -284,6 +326,30 @@ Returns the camera's name.
 :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` **get_position**\ (\ ) |const| :ref:`🔗<class_CameraFeed_method_get_position>`
 
 Returns the position of camera on the device.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CameraFeed_method_get_texture_tex_id:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_texture_tex_id**\ (\ feed_image_type\: :ref:`FeedImage<enum_CameraServer_FeedImage>`\ ) :ref:`🔗<class_CameraFeed_method_get_texture_tex_id>`
+
+Returns the texture backend ID (usable by some external libraries that need a handle to a texture to write data).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_CameraFeed_method_set_external:
+
+.. rst-class:: classref-method
+
+|void| **set_external**\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CameraFeed_method_set_external>`
+
+Sets the feed as external feed provided by another library.
 
 .. rst-class:: classref-item-separator
 
